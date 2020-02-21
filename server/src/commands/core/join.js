@@ -20,6 +20,8 @@ export function parseNickname(core, data) {
     nick: '',
     uType: 'user',
     trip: null,
+    // Numeric User Level. 10 is an arbitrary constant for a normal user.
+    nul: core.nulId.user,
   };
 
   // seperate nick from password
@@ -34,6 +36,8 @@ export function parseNickname(core, data) {
   const password = nickArray[1];
 
   if (hash(password + core.config.tripSalt) === core.config.adminTrip) {
+    // numeric user level constant for admin.
+    userInfo.nul = core.nulId.admin;
     userInfo.uType = 'admin';
     userInfo.trip = 'Admin';
   } else if (userInfo.nick.toLowerCase() === core.config.adminName.toLowerCase()) {
@@ -48,6 +52,7 @@ export function parseNickname(core, data) {
   core.config.mods.forEach((mod) => {
     if (userInfo.trip === mod.trip) {
       userInfo.uType = 'mod';
+      userInfo.nul = core.nulId.moderator;
     }
   });
 

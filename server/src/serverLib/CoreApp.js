@@ -27,6 +27,17 @@ class CoreApp {
     * @return {void}
     */
   async init() {
+    // numeric user level information, put here so that it can be accessed whenever it's needed.
+    // Such 'high' numbers to provide plenty of space, ex: in the future 'roles' are added and
+    // we want to allow them to set priorities.
+    this.nulId = {
+      admin: 10000, // site-wide
+      moderator: 9999, // site-wide
+      channelOwner: 1001,
+      channelModerator: 1000,
+      user: 100,
+    };
+
     await this.buildConfigManager();
 
     this.buildImportManager();

@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [] - 2020-02-20
+### Added
+- (Server) Simple base of NUL system. (Numeric User Level).
+            This provides a method of knowing the 'importance'/ability of a specific user.
+
 ## [2.1.92 pre 2.2] - 2019-11-06
 ### Added
 - (Server) `./server/src/utility/` directory
